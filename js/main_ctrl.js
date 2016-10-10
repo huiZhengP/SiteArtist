@@ -4,33 +4,27 @@ app.controller("main_ctrl",function($scope)
   $scope.menus = [
     {
       title: "Accueil",
-      action: "#/",
+      action: "#/"
     },
     {
       title: "Evénements",
-      action: "#/evenements",
+      action: "#/evenements"
     },
     {
-      title: "Oeuvres",
-      action: "#",
-      menus: [
-        {
-          title: "Oeuvres par thème",
-          action: "#/themes"
-        },
-        {
-          title: "Oeuvres par année",
-          action: "#/annees"
-        }
-      ]
+      title: "Oeuvres par thème",
+      action: "#/themes"
+    },
+    {
+      title: "Oeuvres par année",
+      action: "#/annees"
     },
     {
       title: "Parcours",
-      action: "#",
+      action: "#/parcours"
     },
     {
       title: "Me contacter",
-      action: "#",
+      action: "#/contact"
     }
   ];
 
