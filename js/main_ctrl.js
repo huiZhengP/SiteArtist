@@ -1,13 +1,37 @@
 app.controller("main_ctrl",function($scope)
 {
-  $scope.tableaux = [];
 
-  var remplir_tableaux = function(){
-    var i = 0;
-    for (i;i < 9; i++){
-      $scope.tableaux[i] = 'img/autoportraits/a00' + (i+1) + '.jpg';
+  $scope.menus = [
+    {
+      title: "Accueil",
+      action: "#/",
+    },
+    {
+      title: "Evénements",
+      action: "#/evenements",
+    },
+    {
+      title: "Oeuvres",
+      action: "#",
+      menus: [
+        {
+          title: "Oeuvres par thème",
+          action: "#/themes"
+        },
+        {
+          title: "Oeuvres par année",
+          action: "#/annees"
+        }
+      ]
+    },
+    {
+      title: "Parcours",
+      action: "#",
+    },
+    {
+      title: "Me contacter",
+      action: "#",
     }
-  };
-  remplir_tableaux();
+  ];
 
 });

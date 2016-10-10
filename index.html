@@ -3,9 +3,21 @@
   <head>
     <meta charset="utf-8">
     <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-animate.js"></script>
+    <script type="text/javascript" src="lib/angular-route.min.js"></script>
+
+
+    <script src="lib/bootstrap/ui-bootstrap-tpls-2.1.4.min.js"></script>
+    <script src="lib/bootstrap/ui-bootstrap-2.1.4.min.js"></script>
+
+
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/main_ctrl.js"></script>
+    <script type="text/javascript" src="js/controller/annees_ctrl.js"></script>
+
     <link rel="stylesheet" href="css/style.css"></link>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/ui-bootstrap-2.1.4-csp.css">
 
     <title>
       Hui ZHENG
@@ -13,15 +25,37 @@
   </head>
   <body ng-app="site" ng-controller="main_ctrl">
 
-    <div class="">
-      <p>
-        Work (by year)
-      </p>
-    </div>
-    <div class="tabContainer">
-      <div ng-repeat="tab in tableaux" class="tableau">
-        <img class="imageUnite" src='{{tab}}' alt="tab" />
+    <div class="container">
+      <div>
+        <div class="col-sm-3">
+          <div class="logo">
+            <img src="img/logo.png" alt="logo" />
+          </div>
+          <ul class="nav nav-stacked">
+            <li ng-repeat="menu in menus" ng-class="{dropdown: menu.menus}">
+              <a href="{{menu.action}}" ng-class="{'dropdown-toggle': menu.menus}" data-toggle="dropdown">{{menu.title}}</a>
+              <ul class="nav nav-stacked" ng-if="menu.menus">
+                <li ng-repeat="submenu in menu.menus" ng-class="{dropdown: submenu.menus}">
+                  <a href="{{submenu.action}}" ng-class="{'dropdown-toggle': submenu.menus}" data-toggle="dropdown"><i class="glyphicon glyphicon-chevron-right"></i> {{submenu.title}}</a>
+
+                  <ul ng-if="submenu.menus" class="dropdown-menu">
+                    <li ng-repeat="subsubmenu in submenu.menus">
+                      <a href="{{subsubmenu.action}}">{{subsubmenu.title}}</a>
+                    </li>
+              	   </ul>
+
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-9">
+          <div ng-view>
+          </div>
+        </div>
       </div>
     </div>
+
+
   </body>
 </html>
